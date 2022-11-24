@@ -1,23 +1,12 @@
-﻿using System;
+﻿
 
 namespace Console_ATM_App
 {
-  
-    public class Program
+    internal class Program
     {
-
-    public static void Main()
+        static void Main(string[] args)
         {
-            
-
-            BankATM.Starter();
-
-
-
-            
-
-
-
+            UserDetails.Starter();
         }
     }
 }
