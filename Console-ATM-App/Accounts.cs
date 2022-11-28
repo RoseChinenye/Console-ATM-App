@@ -1,9 +1,7 @@
-﻿using System;
-
-
+﻿
 namespace Console_ATM_App
 {
-    internal class DefaultAccounts
+    internal class Accounts
     {
         private static int _cardNumber = 1020304050;
         private static int _pin = 1234;
@@ -26,16 +24,15 @@ namespace Console_ATM_App
             }
         }
        
-        public DefaultAccounts(string accountName)
+        public Accounts(string accountName)
         {
             AccountName = accountName;
             Number = _cardNumber.ToString();
             Pin = _pin.ToString();
-            _cardNumber++;
-            _pin++;
+            
         }
 
-        public void Transfer(double amount, DateTime date, string statement, string recieverDetails)
+        public void Transfer(double amount, string recieverDetails)
         {
             if (amount <= 0)
             {
@@ -54,10 +51,37 @@ namespace Console_ATM_App
             }
 
         }
+        public void igboTransfer(double amount, string recieverDetails)
+        {
+            if (amount <= 0)
+            {
+                Console.WriteLine("Iweghi ike inwere ego erughi otu naira. ");
+            }
+            else if (Balance - amount < 0)
+            {
+                Console.WriteLine("Ego inwere ezughi!");
+            }
+            else
+            {
+                TransactionsDetails transfer = new TransactionsDetails(-amount);
+                transactions.Add(transfer);
+                Console.WriteLine($"O gara nkeoma!: Ikwunyere {amount} na akantu nomba {recieverDetails}");
+
+            }
+
+        }
+
 
         public void Checkbalance()
         {
+            
             Console.WriteLine($"Available Balance: {Balance}");
+        }
+
+        public void igboCheckbalance()
+        {
+
+            Console.WriteLine($"Ego inwere di: {Balance}");
         }
 
         public void Withdraw(double amount)
@@ -75,6 +99,24 @@ namespace Console_ATM_App
                 TransactionsDetails withdrawal = new TransactionsDetails(-amount);
                 transactions.Add(withdrawal);
                 Console.WriteLine($"Transaction Successful!");
+            }
+
+        }
+        public void igboWithdraw(double amount)
+        {
+            if (amount <= 0)
+            {
+                Console.WriteLine("Ego ole itinyere adabaghi!");
+            }
+            else if (Balance - amount < 0)
+            {
+                Console.WriteLine("Ego inwere ezughi!...");
+            }
+            else
+            {
+                TransactionsDetails withdrawal = new TransactionsDetails(-amount);
+                transactions.Add(withdrawal);
+                Console.WriteLine($"O gara nkeoma!");
             }
 
         }
