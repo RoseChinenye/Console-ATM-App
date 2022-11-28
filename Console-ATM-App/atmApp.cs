@@ -221,16 +221,22 @@
 
                             Console.WriteLine("Tinye akantu nomba: ");
                             var recieverAccount = Console.ReadLine();
-
-
-                            if (double.TryParse(transferAmount, out double transferAmountInput))
+                            if (recieverAccount.Length == 10)
                             {
-                                owner.igboTransfer(transferAmountInput, recieverAccount);
-                                Transaction(owner);
+
+                                if (double.TryParse(transferAmount, out double transferAmountInput))
+                                {
+                                    owner.igboTransfer(transferAmountInput, recieverAccount);
+                                    Transaction(owner);
+                                }
+                                else
+                                {
+                                    Transaction(owner);
+                                }
                             }
                             else
                             {
-                                Transaction(owner);
+                                Console.WriteLine("Akantu nomba itinyere ezughi oke!");
                             }
                             break;
 
